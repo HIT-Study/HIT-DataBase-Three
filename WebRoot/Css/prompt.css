@@ -1,0 +1,19 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	width: 100%;
+}
+.title{
+	text-align: center;
+	font-size: 40px;
+	margin-top: 9%;
+}
+.btn button{
+	width: 80px;
+	height: 40px;
+	margin-top: 9%;
+	text-align: center;
+	margin-left: 17%;
+}

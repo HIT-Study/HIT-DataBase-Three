@@ -1,0 +1,48 @@
+.table_set{
+	border: 1px solid #000;
+	width: 70%;
+	padding: 5%;
+	text-align: center;
+	padding-left: 11%;
+	margin-left: 8%;
+	margin-top: 20px;
+	padding-top: 20px;
+	margin-bottom: 20px;
+	font-family:'Sitka Heading';
+	/*background:rgba(22,26,8,0.7);*/
+	/*color: #fff;*/
+	color: black;
+}
+.table_set  caption{
+	font-size: 30px;
+	margin-bottom: 20px;
+	color: red;
+	text-align: center;
+}
+.table_set .catalogue{
+	font-weight: bold;
+	text-align: left;
+}
+.table_set  table td{
+	width:160px;
+	text-align: right;
+	height: 30px;
+	color: black;
+}
+.table_set  td input{
+	/*border-top-style: none;
+	border-left-style: none;
+	border-right-style: none;
+	border-bottom-color: black;*/
+	border-color: white;
+	background:rgba(22,26,8,0);
+	color: black;
+}
+.table_set  #submit{
+	margin-right: 80px;
+	width: 70px;
+}
+.table_set #reset{
+	margin-top: 40px;
+	width: 70px;
+}
