@@ -44,10 +44,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<dd class="first_dd"><a href="<%=path %>/readBoosterYaml.do" id="degassing_edit_a">编辑</a></dd>
 			<dd><a href="<%=path %>/booster_mip.do" id="degassing_count4">计算</a></dd>
 		</dl>
-		<div class="time_display">
-			计算时间：
-			<br><span id="yy004" >0时0分0秒</span>
-		</div>
 	</div>
 	<div class="web_content">
 	<div class="welcome">
@@ -55,15 +51,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<span>哈工大数据库实验3</span>
 	</div>
 		<div class="" id="polution_edit_table_set">
-				<form action="<%=path %>/selectAllTable.do" method="post" accept-charset="utf-8" >
+				<form action="<%=path %>/selectCustomerTable.do" method="post" accept-charset="utf-8" >
 					
-					<caption>单表查询</caption>
+					<caption>Customer单表查询</caption>
 					<table>
 					<tr>		
 						<input type="text"   name="table"></input>
 					</tr>
-						输入条件<br>
-						
+					<b>	输入条件</b><br>
 						<tr>	customerNo:<input type="text"   name="customerNo"></input></tr>
 						<tr>	customerName:<input type="text"   name="customerName"></input></tr>
 						<tr>	telephone:<input type="text"   name="telephone"></input></tr>
@@ -75,127 +70,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		</div>
 		
-		
+		<div class="" id="polution_edit_table_set">
+				<form action="<%=path %>/selectCustomerTable.do" method="post" accept-charset="utf-8" >
+					
+					<caption>产品单表修改</caption>
+					<table>
+					<tr>		
+						<input type="text"   name="table"></input>
+					</tr>
+					<b>	输入条件</b><br>
+						<tr>	productNo:<input type="text"   name="customerNo"></input></tr>
+						<tr>	productName:<input type="text"   name="customerName"></input></tr>
+						<tr>	telephone:<input type="text"   name="telephone"></input></tr>
+						<tr>address:<input type="text"   name="address"></input></tr>
+						<tr>	zip:<input type="text"   name="zip"></input></tr>
+					</table>
+					<input id="submit" type="submit" value="查询"></input>
+				</form>
+			
+		</div>
 	</div>
 </div>
 
 
 
-<script type="text/javascript" src="Js/jquery.js"></script>
-<script type="text/javascript">
-	var objWidth,objHeight;
-		function bigger(obj) {
-			objWidth = obj.style.width;
-			objHeight = obj.style.height;
-			obj.style.width = '300px';
-			obj.style.height = '200px';
-		}
-		function smaller(obj) {
-			obj.style.width = objWidth;
-			obj.style.height = objHeight;
-		}
-	</script>
 
 
-<script type="text/javascript">
-//这是计时的程序
 
-	var sec =0;
-	var minu=0;
-	var hou=0;
-
-$('#degassing_count1').click(function(){
-//每隔一秒刷新一次
-window.setTimeout("uupdate()",1000);
-});
-
-function uupdate()
-{
-    sec++;    
-    if(sec==60)
-    {
-        sec =0;
-        minu +=1;
-    }
-    if(minu==60)
-    {
-        minu=0;
-        hou+=1;
-    }
-    var ss04 =hou+ "时"+minu+"分"+sec+"秒";
-    document.getElementById('yy004').innerHTML=ss04;
-    window.setTimeout("uupdate()",1000);
-}
-
-$('#degassing_count2').click(function(){
-//每隔一秒刷新一次
-window.setTimeout("uupdate()",1000);
-});
-
-function uupdate()
-{
-    sec++;    
-    if(sec==60)
-    {
-        sec =0;
-        minu +=1;
-    }
-    if(minu==60)
-    {
-        minu=0;
-        hou+=1;
-    }
-    var ss04 =hou+ "时"+minu+"分"+sec+"秒";
-    document.getElementById('yy004').innerHTML=ss04;
-    window.setTimeout("uupdate()",1000);
-}
-
-$('#degassing_count3').click(function(){
-//每隔一秒刷新一次
-window.setTimeout("uupdate()",1000);
-});
-
-function uupdate()
-{
-    sec++;    
-    if(sec==60)
-    {
-        sec =0;
-        minu +=1;
-    }
-    if(minu==60)
-    {
-        minu=0;
-        hou+=1;
-    }
-    var ss04 =hou+ "时"+minu+"分"+sec+"秒";
-    document.getElementById('yy004').innerHTML=ss04;
-    window.setTimeout("uupdate()",1000);
-}
-
-$('#degassing_count4').click(function(){
-//每隔一秒刷新一次
-window.setTimeout("uupdate()",1000);
-});
-
-function uupdate()
-{
-    sec++;    
-    if(sec==60)
-    {
-        sec =0;
-        minu +=1;
-    }
-    if(minu==60)
-    {
-        minu=0;
-        hou+=1;
-    }
-    var ss04 =hou+ "时"+minu+"分"+sec+"秒";
-    document.getElementById('yy004').innerHTML=ss04;
-    window.setTimeout("uupdate()",1000);
-}
-</script>
 
 
 
