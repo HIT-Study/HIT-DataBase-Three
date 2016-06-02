@@ -9,7 +9,18 @@ public class OrderDetail {
 
     private Integer quantity;
 
-    private BigDecimal price;
+    
+    
+    public OrderDetail(String orderno, String productno, Integer quantity,
+			BigDecimal price) {
+		super();
+		this.orderno = orderno;
+		this.productno = productno;
+		this.quantity = quantity;
+		this.price = price;
+	}
+
+	private BigDecimal price;
 
     public String getOrderno() {
         return orderno;

@@ -50,8 +50,26 @@ public class Employee {
     public Date getBirthday() {
         return birthday;
     }
+    
+    
 
-    public void setBirthday(Date birthday) {
+    public Employee(String employeeno, String employeename, String gender,
+			Date birthday, String address, String telephone, Date hiredate,
+			String department, String headship, Long salary) {
+		super();
+		this.employeeno = employeeno;
+		this.employeename = employeename;
+		this.gender = gender;
+		this.birthday = birthday;
+		this.address = address;
+		this.telephone = telephone;
+		this.hiredate = hiredate;
+		this.department = department;
+		this.headship = headship;
+		this.salary = salary;
+	}
+
+	public void setBirthday(Date birthday) {
         this.birthday = birthday;
     }
 

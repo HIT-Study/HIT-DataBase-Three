@@ -15,8 +15,21 @@ public class OrderMaster {
     private BigDecimal ordersum;
 
     private String invoiceno;
+    
+    
 
-    public String getOrderno() {
+    public OrderMaster(String orderno, String customerno, String employeeno,
+			Date orderdate, BigDecimal ordersum, String invoiceno) {
+		super();
+		this.orderno = orderno;
+		this.customerno = customerno;
+		this.employeeno = employeeno;
+		this.orderdate = orderdate;
+		this.ordersum = ordersum;
+		this.invoiceno = invoiceno;
+	}
+
+	public String getOrderno() {
         return orderno;
     }
 

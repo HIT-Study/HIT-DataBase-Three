@@ -50,4 +50,20 @@ public class Customer {
     public void setZip(String zip) {
         this.zip = zip == null ? null : zip.trim();
     }
+
+	public Customer(String customerno, String customername, String telephone,
+			String address, String zip) {
+		super();
+		this.customerno = customerno;
+		this.customername = customername;
+		this.telephone = telephone;
+		this.address = address;
+		this.zip = zip;
+	}
+
+	public Customer() {
+		// TODO Auto-generated constructor stub
+	}
+    
+    
 }

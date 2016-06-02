@@ -52,4 +52,16 @@ public class Product {
     public void setInstock(Integer instock) {
         this.instock = instock;
     }
+
+	public Product(String productno, String productname, String productclass,
+			BigDecimal productprice, Integer instock) {
+		super();
+		this.productno = productno;
+		this.productname = productname;
+		this.productclass = productclass;
+		this.productprice = productprice;
+		this.instock = instock;
+	}
+    
+    
 }

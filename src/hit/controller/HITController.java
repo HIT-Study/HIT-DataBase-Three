@@ -4,6 +4,9 @@ package hit.controller;
  */
 
 import hit.po.Customer;
+import hit.po.Employee;
+import hit.po.OrderDetail;
+import hit.po.OrderMaster;
 
 import java.sql.Connection;  
 import java.sql.DriverManager;  
@@ -15,7 +18,9 @@ import java.sql.SQLException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -42,14 +47,99 @@ public class HITController extends AbstractController {
 		return null;
 	}
 	
-	static String sql = null;  
-    static DBHelper db1 = null;  
-    static ResultSet ret = null;  
+	
 	
 	@RequestMapping(value="/selectAllTable.do",method={RequestMethod.POST,RequestMethod.GET})
-	public String selectAllTable(@RequestParam(defaultValue="") String table,HttpServletRequest request){
+	public String selectAllTable(@RequestParam(defaultValue="") String table,HttpServletRequest request) throws SQLException{
+		
+		 String sql = null;  
+	     DBHelper db1 = null;  
+	     ResultSet ret = null;  
+		 System.out.println("table名称是："+table);
 		    if(table!=null){
-			sql = "select * from" + table;//SQL语句  
+		    								//customer
+			sql = "select * from " + table;//SQL语句  
+	        db1 = new DBHelper(sql);//创建DBHelper对象  
+	        
+	        ret = db1.pst.executeQuery();//执行语句，得到结果集  
+	        List list = new ArrayList();
+	        if(ret.getMetaData().getColumnCount()==5&&ret.getMetaData().getColumnName(1)=="customerNo"){
+	        	 while (ret.next()) {  
+		            	Customer customer = new Customer();
+		                String customerNo = ret.getString(1);  
+		                String customerName = ret.getString(2);  
+		                String telephone = ret.getString(3);  
+		                String address = ret.getString(4);  
+		                String zip = ret.getString(5);  
+		                customer.setCustomerno(customerNo);
+		                customer.setCustomername(customerName);
+		                customer.setZip(zip);
+		                customer.setTelephone(telephone);
+		                customer.setAddress(address);
+		                System.out.println(customerNo + "\t" + customerName + "\t" + telephone + "\t" + address
+		                		+ "\t" + zip );  
+		                list.add(customer);
+		            }//显示数据  
+	        }else if(ret.getMetaData().getColumnCount()==10){
+	        	while (ret.next()) {  
+	        		@SuppressWarnings("deprecation")
+					Employee employee = new Employee(ret.getString(1), ret.getString(2),
+	        				ret.getString(3), new Date(ret.getString(4)), ret.getString(5), ret.getString(6), 
+	        				new Date(ret.getString(7)), ret.getString(8), ret.getString(9), Long.parseLong(ret.getString(10)));
+	                list.add(employee);
+	            }//显示数据  
+			}else if (ret.getMetaData().getColumnCount()==4) {
+				//orderDetail
+				while (ret.next()) {  
+	            	OrderDetail od = new OrderDetail(ret.getString(1), ret.getString(2),Integer.parseInt( ret.getString(3)), new BigDecimal(ret.getString(4)));
+	                list.add(od);
+	            }//显示数据  
+			}else if (ret.getMetaData().getColumnCount()==6) {
+				//orderMaster
+					OrderMaster om = new OrderMaster(ret.getString(1), ret.getString(2),
+							ret.getString(3), ret.getString(4), ret.getString(5), ret.getString(6))
+	                list.add(customer);
+	            }//显示数据  
+			}else {
+				//product
+				while (ret.next()) {  
+	            	Customer customer = new Customer();
+	                String customerNo = ret.getString(1);  
+	                String customerName = ret.getString(2);  
+	                String telephone = ret.getString(3);  
+	                String address = ret.getString(4);  
+	                String zip = ret.getString(5);  
+	                customer.setCustomerno(customerNo);
+	                customer.setCustomername(customerName);
+	                customer.setZip(zip);
+	                customer.setTelephone(telephone);
+	                customer.setAddress(address);
+	                System.out.println(customerNo + "\t" + customerName + "\t" + telephone + "\t" + address
+	                		+ "\t" + zip );  
+	                list.add(customer);
+	            }//显示数据  
+			}
+	           
+	            request.getSession().setAttribute("list", list);
+	            request.getSession().setAttribute("table", table);
+	            ret.close();  
+	            db1.close();//关闭连接  
+	        	return "Page/1";
+		
+		}else{
+			return "error";
+		}
+		}
+	
+
+	@Test
+	public void testCollection(){
+		
+		 String sql = null;  
+	     DBHelper db1 = null;  
+	     ResultSet ret = null;  
+		    	
+			sql = "select * from customer" ;//SQL语句  
 	        db1 = new DBHelper(sql);//创建DBHelper对象  
 	  
 	        try {  
@@ -71,17 +161,10 @@ public class HITController extends AbstractController {
 	                		+ "\t" + zip );  
 	                list.add(customer);
 	            }//显示数据  
-	            request.getSession().setAttribute("list", list);
 	            ret.close();  
 	            db1.close();//关闭连接  
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  
 	        }  
-		
-		return "Page/1";
-		
-		}else{
-			return "error";
-		}
 		}
 }
