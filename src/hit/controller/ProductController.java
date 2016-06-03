@@ -60,9 +60,7 @@ public class ProductController extends AbstractController {
 		System.out.println("table名称是：" + table);
 		if (table != null) {
 			sql = "select * from " + table;// SQL语句
-
 			
-
 			db1 = new DBHelper(sql);// 创建DBHelper对象
 
 			ret = db1.pst.executeQuery();// 执行语句，得到结果集
@@ -120,12 +118,12 @@ public class ProductController extends AbstractController {
 	     DBHelper db1 = null;  
 	     ResultSet ret = null;  
 		    	
-			sql = "select * from customer" ;//SQL语句  
+			sql = "delete from orderdetail where orderNo ='200801090001'" ;//SQL语句  
 	        db1 = new DBHelper(sql);//创建DBHelper对象  
 	  
 	        try {  
-	            ret = db1.pst.executeQuery();//执行语句，得到结果集  
-	            List list = new ArrayList();
+	         db1.pst.executeQuery();//执行语句，得到结果集  
+	         /*   List list = new ArrayList();
 	            while (ret.next()) {  
 	            	Customer customer = new Customer();
 	                String customerNo = ret.getString(1);  
@@ -141,11 +139,15 @@ public class ProductController extends AbstractController {
 	                System.out.println(customerNo + "\t" + customerName + "\t" + telephone + "\t" + address
 	                		+ "\t" + zip );  
 	                list.add(customer);
-	            }//显示数据  
+	            }//显示数据  */
 	            ret.close();  
 	            db1.close();//关闭连接  
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  
 	        }  
 		}
+	
+	
+	
+	
 }

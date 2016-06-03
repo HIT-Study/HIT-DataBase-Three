@@ -114,13 +114,14 @@ public class CustomerController extends AbstractController {
 	     DBHelper db1 = null;  
 	     ResultSet ret = null;  
 		    	
-			sql = "select * from customer" ;//SQL语句  
+			sql = "update product p set p.productname = '32M DRAM' ,p.productclass = '内存12',  p.productprice = 80.70, p.instock = 80 where p.productno = 'P20050001'" ;//SQL语句  
 	        db1 = new DBHelper(sql);//创建DBHelper对象  
 	  
 	        try {  
-	            ret = db1.pst.executeQuery();//执行语句，得到结果集  
+	            Boolean flag = db1.pst.execute();//执行语句，得到结果集  
+	            System.out.println(flag);
 	            List list = new ArrayList();
-	            while (ret.next()) {  
+	          /*  while (ret.next()) {  
 	            	Customer customer = new Customer();
 	                String customerNo = ret.getString(1);  
 	                String customerName = ret.getString(2);  
@@ -136,7 +137,7 @@ public class CustomerController extends AbstractController {
 	                		+ "\t" + zip );  
 	                list.add(customer);
 	            }//显示数据  
-	            ret.close();  
+*/	          /*  ret.close();  */
 	            db1.close();//关闭连接  
 	        } catch (SQLException e) {  
 	            e.printStackTrace();  

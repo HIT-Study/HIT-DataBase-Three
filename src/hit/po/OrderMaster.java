@@ -10,7 +10,7 @@ public class OrderMaster {
 
     private String employeeno;
 
-    private Date orderdate;
+    private String orderdate;
 
     private BigDecimal ordersum;
 
@@ -19,7 +19,7 @@ public class OrderMaster {
     
 
     public OrderMaster(String orderno, String customerno, String employeeno,
-			Date orderdate, BigDecimal ordersum, String invoiceno) {
+			String orderdate, BigDecimal ordersum, String invoiceno) {
 		super();
 		this.orderno = orderno;
 		this.customerno = customerno;
@@ -53,11 +53,11 @@ public class OrderMaster {
         this.employeeno = employeeno == null ? null : employeeno.trim();
     }
 
-    public Date getOrderdate() {
+    public String getOrderdate() {
         return orderdate;
     }
 
-    public void setOrderdate(Date orderdate) {
+    public void setOrderdate(String orderdate) {
         this.orderdate = orderdate;
     }
 
