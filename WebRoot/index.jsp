@@ -61,7 +61,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 		</div>
 		
-		
+		<div class="" id="polution_edit_table_set">
+				<form action="<%=path %>/selectUnionTable.do" method="post" accept-charset="utf-8" >
+					
+					<caption>多表联合查询(此例子是查询任意一个Employee的订单表)</caption>
+					<table>
+					<tr>		
+						Employee姓名：<input type="text"   name="employeeName"></input>
+					</tr>
+			
+					</table>
+					<input id="submit" type="submit" value="联合查询"></input>
+				</form>
+			
+		</div>
 		
 		
 		<div class="" id="polution_edit_table_set">

@@ -57,9 +57,7 @@ public class OrderController extends AbstractController {
 	      try {
 			db.conn.setAutoCommit(false);
 			db.pst.execute(sql);
-			db.pst.addBatch();
 			db.pst.execute(sql_Second);
-			db.pst.addBatch();
 			db.pst.executeBatch();
 			db.conn.commit();
 		} catch (Exception e) {
